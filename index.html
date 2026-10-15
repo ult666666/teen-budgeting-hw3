@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teen Budgeting</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">MONTHLY MONEY CHECK</p>
+      <h1>Teen Budgeting</h1>
+      <p class="subtitle">Set a monthly budget, add expenses, and see what is left.</p>
+    </header>
+
+    <section class="card budget-card" aria-labelledby="budget-title">
+      <h2 id="budget-title">Monthly budget</h2>
+      <form id="budget-form" class="row">
+        <label class="field">
+          <span>Budget amount</span>
+          <input id="budget-input" type="number" min="0.01" step="0.01" placeholder="500">
+        </label>
+        <button type="submit">Set budget</button>
+      </form>
+      <p id="budget-error" class="error" aria-live="polite"></p>
+    </section>
+
+    <section class="summary" aria-label="Budget summary">
+      <article class="card metric"><span>BUDGET</span><strong id="budget-total">$0.00</strong></article>
+      <article class="card metric"><span>SPENT</span><strong id="spent-total">$0.00</strong></article>
+      <article class="card metric"><span>REMAINING</span><strong id="remaining-total">$0.00</strong></article>
+    </section>
+
+    <section class="card" aria-labelledby="expense-title">
+      <h2 id="expense-title">Add an expense</h2>
+      <form id="expense-form" class="expense-grid">
+        <label class="field">
+          <span>Description</span>
+          <input id="description-input" maxlength="60" placeholder="Lunch">
+        </label>
+        <label class="field">
+          <span>Amount</span>
+          <input id="amount-input" type="number" min="0.01" step="0.01" placeholder="12.50">
+        </label>
+        <button type="submit">Add expense</button>
+      </form>
+      <p id="expense-error" class="error" aria-live="polite"></p>
+    </section>
+
+    <section class="card" aria-labelledby="list-title">
+      <div class="list-heading">
+        <h2 id="list-title">Expenses</h2>
+        <span id="item-count">0 items</span>
+      </div>
+      <ul id="expense-list" class="expense-list">
+        <li class="empty">No expenses yet.</li>
+      </ul>
+    </section>
+  </main>
+  <script src="core.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

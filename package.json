@@ -1,0 +1,13 @@
+{
+  "name": "teen-budgeting-hw3",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "build": "node scripts/build.cjs",
+    "dev": "node scripts/dev.cjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
