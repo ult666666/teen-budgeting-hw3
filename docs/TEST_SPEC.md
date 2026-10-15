@@ -72,3 +72,7 @@ Companion to `requirements.md` and `SECURITY_SPEC.md`. Every acceptance criterio
 - [ ] `npm test` and `npm run build` are green; no tests skipped or deleted
 - [ ] A human read the test names against the spec
 - [ ] README lists what is not built (non-goals) and the security spec audit
+
+## HW3 implementation supplement (2026-10-15)
+
+The original matrix above is retained as the full-product specification, not a claim that every story is built. The implemented R-05 and SEC-18 mappings and their current status are in the README criterion-to-test table. `tests/story.test.mjs` covers the new entry story; `tests/security.test.mjs` covers validation boundaries; `tests/legacy.test.mjs` preserves the eight original assertions. Unbuilt production features remain explicitly not met in the security audit.

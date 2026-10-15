@@ -85,3 +85,5 @@ The FTC describes COPPA as applying to services directed to children under 13 or
 
 ### B2 planning note
 The original local specification required an expense description, but the official R-05 makes merchant and note optional. The HW3 build follows R-05: no fabricated required description. Decision to review: a typed name is only a demonstration namespace and cannot protect real financial information.
+
+- WHEN adding or editing a spending entry, THE app SHALL allow merchant and note to be empty; neither field is a required description.
