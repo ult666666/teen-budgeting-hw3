@@ -71,3 +71,17 @@ These are **assumptions**, not details supplied by the requester:
 ## Source notes
 
 The FTC describes COPPA as applying to services directed to children under 13 or with actual knowledge that they collect personal information from children under 13: https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa . This draft targets ages 13–19 and does not substitute for jurisdiction-specific legal review.
+
+## Scope for HW3
+
+- Build R-05: Spending entries (complete amount/date/category/optional merchant and note, then edit and delete with recalculated totals). The October 1 app only had local description/amount addition; edit/delete were not built.
+- No real payments. Any payment would use a Simulated payment button; real payments are a README non-goal. This app has no checkout.
+- No sign-in provider. A typed, made-up display name stands in for a user. Real authentication and secure user ownership remain non-goals, not completed security controls.
+- No database. Keep data in server memory. README must state that it resets on every deploy and can also reset on process restart or instance change.
+- Use fictional spending only. The demo is not a real personal budget store.
+- Allowed categories: Food, Transport, Shopping, Entertainment, Other. Amounts use whole cents from $0.01 through $100,000. Dates use YYYY-MM-DD and cannot be later than today in UTC.
+- WHEN an add or edit is rejected, THE app SHALL keep the previously displayed entries and totals unchanged.
+- IF the server instance has changed, THEN THE server SHALL reject a stale write with 409; THE app SHALL ask the user to reopen the demo rather than report a successful save.
+
+### B2 planning note
+The original local specification required an expense description, but the official R-05 makes merchant and note optional. The HW3 build follows R-05: no fabricated required description. Decision to review: a typed name is only a demonstration namespace and cannot protect real financial information.

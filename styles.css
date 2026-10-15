@@ -70,3 +70,16 @@ button:hover { background: #284d91; }
   button { width: 100%; }
   .shell { padding-top: 42px; }
 }
+
+/* HW3 additions retain the original visual design. */
+.notice { padding: 18px 22px; margin: 0 0 20px; border: 1px solid #cedaf2; border-radius: 12px; background: #edf3ff; color: #31445f; font-size: .9rem; line-height: 1.55; }
+.hint { color: #637083; font-size: .85rem; line-height: 1.5; }
+.entry-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: end; }
+select { width: 100%; border: 1px solid #cbd5e1; border-radius: 10px; padding: 12px 13px; font: inherit; color: #182230; background: #fff; }
+.entry-details { display: grid; gap: 4px; min-width: 0; overflow-wrap: anywhere; }
+.entry-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: end; }
+.secondary { background: #eef2f7; color: #31445f; border: 1px solid #d5deeb; font-weight: 600; }
+.secondary:hover { background: #e0e8f3; }
+button:disabled { cursor: wait; opacity: .55; }
+footer { margin-top: 24px; color: #667085; font-size: .8rem; text-align: center; line-height: 1.6; }
+@media (max-width: 720px) { .entry-grid { grid-template-columns: 1fr; } .expense-list li { flex-direction: column; } .entry-actions { justify-content: start; } .entry-actions button { width: auto; } }
