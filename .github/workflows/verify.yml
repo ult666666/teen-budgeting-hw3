@@ -1,0 +1,29 @@
+name: Verify homework
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: git archive --format=zip --output=hw3-source.zip HEAD
+      - uses: actions/upload-artifact@v7
+        with:
+          name: hw3-source-and-evidence
+          path: hw3-source.zip
+          retention-days: 14
+          if-no-files-found: error
