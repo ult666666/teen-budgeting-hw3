@@ -1,0 +1,7 @@
+{
+  "tokenizer": "o200k_base",
+  "tokens": 328,
+  "characters": 1441,
+  "question": "My order is A1001, last name Shah. The backpack zipper broke. Can you help?",
+  "method": "js-tiktoken exact count for o200k_base; proxy, not Gemini tokenizer"
+}

@@ -1,0 +1,28 @@
+{
+  "url": "https://teen-budgeting-hw3.vercel.app",
+  "checkedAt": "2026-10-15T19:48:26.667Z",
+  "method": "AI-assisted browser checks using Playwright on own app; not student manual Part D",
+  "rows": [
+    {
+      "tried": "Budget $100; add $12.50, 2026-10-15, Food, Fictional Cafe, Practice lunch.",
+      "expected": "One saved entry; spent $12.50; remaining $87.50.",
+      "actual": "BUDGET\n$100.00\nSPENT\n$12.50\nREMAINING\n$87.50"
+    },
+    {
+      "tried": "Edit the saved amount from $12.50 to $7.25.",
+      "expected": "Still one entry; spent $7.25; remaining $92.75.",
+      "actual": "BUDGET\n$100.00\nSPENT\n$7.25\nREMAINING\n$92.75"
+    },
+    {
+      "tried": "Try a new entry with amount -1.",
+      "expected": "Refuse invalid amount; saved entries and totals unchanged.",
+      "actual": "Value must be greater than or equal to 0.01. Spent remains $7.25."
+    },
+    {
+      "tried": "Delete the saved entry.",
+      "expected": "No entries; spent $0; remaining $100.",
+      "actual": "BUDGET\n$100.00\nSPENT\n$0.00\nREMAINING\n$100.00"
+    }
+  ],
+  "browserErrors": []
+}

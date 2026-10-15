@@ -1,0 +1,165 @@
+
+> teen-budgeting-hw3@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/prince/Documents/70445-HW3/teen-budgeting-hw3
+
+stdout | tests/legacy.test.mjs > the original eight October 1 assertions remain passing
+PASS: 8 automated checks
+
+ ✓ tests/legacy.test.mjs (1 test) 5ms
+ ❯ tests/story.test.mjs (9 tests | 7 failed) 11ms
+   × a saved entry appears in history with amount date category merchant and note 6ms
+   × an entry can be saved without an optional merchant or note 1ms
+   × editing an entry updates its fields and recalculates totals 0ms
+   × deleting an entry removes it and updates the totals 0ms
+   × a failed save leaves stored entries and totals unchanged 1ms
+   × deleting a missing or different demo entry returns 404 without changing totals 0ms
+   × the server ignores a total sent by the browser 0ms
+   ✓ a missing display name receives 401 and no spending data 0ms
+   ✓ a changed server instance refuses a stale write rather than claiming it saved 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/story.test.mjs > a saved entry appears in history with amount date category merchant and note
+AssertionError: expected 501 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 501
+
+ ❯ tests/story.test.mjs:19:20
+     17| test('a saved entry appears in history with amount date category merch…
+     18|   const r = call('add', entry);
+     19|   expect(r.status).toBe(200);
+       |                    ^
+     20|   expect(r.body.entries).toHaveLength(1);
+     21|   expect(r.body.entries[0]).toMatchObject(entry);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tests/story.test.mjs > an entry can be saved without an optional merchant or note
+AssertionError: expected 501 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 501
+
+ ❯ tests/story.test.mjs:26:20
+     24| test('an entry can be saved without an optional merchant or note', () …
+     25|   const r = call('add', { amount: 5, date: '2026-10-15', category: 'Tr…
+     26|   expect(r.status).toBe(200);
+       |                    ^
+     27|   expect(r.body.entries[0]).toMatchObject({ merchant: '', note: '', am…
+     28| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  tests/story.test.mjs > editing an entry updates its fields and recalculates totals
+AssertionError: expected 501 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 501
+
+ ❯ tests/story.test.mjs:31:24
+     29| test('editing an entry updates its fields and recalculates totals', ()…
+     30|   const first = call('add', entry);
+     31|   expect(first.status).toBe(200);
+       |                        ^
+     32|   const r = call('edit', { ...entry, id: first.body.entries[0].id, amo…
+     33|   expect(r.status).toBe(200);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  tests/story.test.mjs > deleting an entry removes it and updates the totals
+AssertionError: expected 501 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 501
+
+ ❯ tests/story.test.mjs:41:24
+     39| test('deleting an entry removes it and updates the totals', () => {
+     40|   const first = call('add', entry);
+     41|   expect(first.status).toBe(200);
+       |                        ^
+     42|   const id = first.body.entries[0].id;
+     43|   call('add', { ...entry, amount: 4 });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  tests/story.test.mjs > a failed save leaves stored entries and totals unchanged
+AssertionError: expected 501 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 501
+
+ ❯ tests/story.test.mjs:51:37
+     49| });
+     50| test('a failed save leaves stored entries and totals unchanged', () =>…
+     51|   expect(call('add', entry).status).toBe(200);
+       |                                     ^
+     52|   const before = service.handle('GET', { displayName: 'demo-maya' }).b…
+     53|   expect(call('add', { ...entry, amount: -1 }).status).toBe(422);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  tests/story.test.mjs > deleting a missing or different demo entry returns 404 without changing totals
+AssertionError: expected 501 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 501
+
+ ❯ tests/story.test.mjs:58:24
+     56| test('deleting a missing or different demo entry returns 404 without c…
+     57|   const first = call('add', entry);
+     58|   expect(first.status).toBe(200);
+       |                        ^
+     59|   call('start', {}, 'demo-jordan');
+     60|   expect(call('delete', { id: first.body.entries[0].id }, 'demo-jordan…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  tests/story.test.mjs > the server ignores a total sent by the browser
+AssertionError: expected 501 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 501
+
+ ❯ tests/story.test.mjs:66:20
+     64| test('the server ignores a total sent by the browser', () => {
+     65|   const r = call('add', { ...entry, total: -999, spent: 0, remaining: …
+     66|   expect(r.status).toBe(200);
+       |                    ^
+     67|   expect(r.body.totals).toEqual({ budget: 100, spent: 12.5, remaining:…
+     68| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  7 failed | 3 passed (10)
+   Start at  15:40:39
+   Duration  209ms (import 41%, tests 32%, transform 14%, worker 13%, environment 1%)
+
+
+TEST EXIT CODE: 1

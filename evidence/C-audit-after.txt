@@ -1,0 +1,1 @@
+SEC-18 | Fully for scoped entry routes | Server validates amount, valid non-future date, category and text types; add and edit reject merchant/note over 200 characters. No gap remains in this row for implemented routes; future goal/lesson routes and other audit rows are not certified.

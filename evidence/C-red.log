@@ -1,0 +1,85 @@
+
+> teen-budgeting-hw3@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/prince/Documents/70445-HW3/teen-budgeting-hw3
+
+stdout | tests/legacy.test.mjs > the original eight October 1 assertions remain passing
+PASS: 8 automated checks
+
+ ✓ tests/legacy.test.mjs (1 test) 5ms
+ ✓ tests/story.test.mjs (9 tests) 7ms
+ ❯ tests/security.test.mjs (22 tests | 3 failed) 11ms
+   ✓ the server accepts a merchant of exactly 200 characters 3ms
+   × the server rejects a 201-character merchant before saving 4ms
+   ✓ the server accepts a note of exactly 200 characters 0ms
+   × the server rejects a 201-character note before saving 0ms
+   × an overlong edited note is rejected without replacing the existing entry 0ms
+   ✓ the server rejects invalid amount 0 (number) 0ms
+   ✓ the server rejects invalid amount -1 (number) 0ms
+   ✓ the server rejects invalid amount 100000.01 (number) 0ms
+   ✓ the server rejects invalid amount 12.50 (string) 0ms
+   ✓ the server rejects invalid amount abc (string) 0ms
+   ✓ the server rejects invalid amount null (object) 0ms
+   ✓ the server rejects invalid amount Infinity (number) 0ms
+   ✓ the server rejects invalid amount NaN (number) 0ms
+   ✓ the server rejects invalid amount 0.001 (number) 0ms
+   ✓ the server accepts the amount boundary 0.01 0ms
+   ✓ the server accepts the amount boundary 100000 0ms
+   ✓ the server rejects invalid or future date 2026-10-16 0ms
+   ✓ the server rejects invalid or future date 2026-02-30 0ms
+   ✓ the server rejects invalid or future date not-a-date 0ms
+   ✓ the server accepts today and a valid leap day 0ms
+   ✓ the server rejects an unlisted category 0ms
+   ✓ the server rejects non-text notes and merchants 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/security.test.mjs > the server rejects a 201-character merchant before saving
+ FAIL  tests/security.test.mjs > the server rejects a 201-character note before saving
+AssertionError: expected 200 to be 422 // Object.is equality
+
+- Expected
++ Received
+
+- 422
++ 200
+
+ ❯ tests/security.test.mjs:20:22
+     18|   test(`the server rejects a 201-character ${field} before saving`, ()…
+     19|     const r = call('add', { ...entry, [field]: 'x'.repeat(201) });
+     20|     expect(r.status).toBe(422);
+       |                      ^
+     21|     expect(service.handle('GET', { displayName: 'demo-maya' }).body.en…
+     22|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/security.test.mjs > an overlong edited note is rejected without replacing the existing entry
+AssertionError: expected 200 to be 422 // Object.is equality
+
+- Expected
++ Received
+
+- 422
++ 200
+
+ ❯ tests/security.test.mjs:26:96
+     24| test('an overlong edited note is rejected without replacing the existi…
+     25|   const original = call('add', entry).body;
+     26|   expect(call('edit', { ...entry, id: original.entries[0].id, note: 'x…
+       |                                                                                                ^
+     27|   expect(service.handle('GET', { displayName: 'demo-maya' }).body).toE…
+     28| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  3 failed | 29 passed (32)
+   Start at  15:46:27
+   Duration  201ms (import 34%, transform 31%, tests 25%, worker 10%, environment 1%)
+
+
+TEST EXIT CODE: 1

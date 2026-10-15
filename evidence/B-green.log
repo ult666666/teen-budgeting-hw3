@@ -1,0 +1,18 @@
+
+> teen-budgeting-hw3@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/prince/Documents/70445-HW3/teen-budgeting-hw3
+
+stdout | tests/legacy.test.mjs > the original eight October 1 assertions remain passing
+PASS: 8 automated checks
+
+ ✓ tests/legacy.test.mjs (1 test) 6ms
+ ✓ tests/story.test.mjs (9 tests) 7ms
+
+ Test Files  2 passed (2)
+      Tests  10 passed (10)
+   Start at  15:45:35
+   Duration  167ms (import 42%, tests 27%, worker 15%, transform 15%)
+

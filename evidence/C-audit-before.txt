@@ -1,0 +1,1 @@
+SEC-18 | Partly | Server validates amount, date, category and text types; per-field 200-character limits exist only in the browser.
